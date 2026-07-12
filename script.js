@@ -43,7 +43,9 @@ table.innerHTML += `
 <tr>
 <td>${trade.date}</td>
 <td>${trade.pair}</td>
-<td>${trade.profit}</td>
+<td style="color:${trade.profit >= 0 ? '#22c55e' : '#ef4444'};font-weight:bold;">
+${trade.profit}
+</td>
 <td>
 <button onclick="deleteTrade(${index})">
 ❌
