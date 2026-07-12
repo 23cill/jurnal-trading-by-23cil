@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trading Journal Pro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>📊 Trading Journal Pro</h1>
+
+<div class="stats">
+<div class="card">
+<h3>Total Trade</h3>
+<p id="totalTrades">0</p>
+</div>
+
+<div class="card">
+<h3>Win Rate</h3>
+<p id="winRate">0%</p>
+</div>
+
+<div class="card">
+<h3>Total Profit</h3>
+<p id="totalProfit">$0</p>
+</div>
+</div>
+
+<form id="tradeForm">
+<input type="date" id="date" required>
+<input type="text" id="pair" placeholder="EURUSD" required>
+<input type="number" id="profit" placeholder="Profit/Loss" required>
+<button type="submit">Tambah Trade</button>
+</form>
+
+<table>
+<thead>
+<tr>
+<th>Tanggal</th>
+<th>Pair</th>
+<th>P/L</th>
+<th>Hapus</th>
+</tr>
+</thead>
+<tbody id="tradeTable"></tbody>
+</table>
+
+<button id="exportBtn">Export CSV</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
