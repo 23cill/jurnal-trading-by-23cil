@@ -103,6 +103,7 @@ function deleteTrade(index){
 trades.splice(index,1);
 saveData();
 renderTable();
+updateBalance();
 }
 
 document.getElementById("exportBtn")
