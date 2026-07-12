@@ -175,4 +175,24 @@ tension:0.3
 }]
 }
 });
+
+  const winCount = trades.filter(t => t.profit > 0).length;
+const lossCount = trades.filter(t => t.profit < 0).length;
+
+const pieCtx = document.getElementById("winLossChart");
+
+if(window.winLossChartInstance){
+window.winLossChartInstance.destroy();
+}
+
+window.winLossChartInstance = new Chart(pieCtx,{
+type:"pie",
+data:{
+labels:["Win","Loss"],
+datasets:[{
+data:[winCount,lossCount],
+backgroundColor:["#22c55e","#ef4444"]
+}]
+}
+});
   }
