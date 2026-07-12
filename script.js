@@ -32,12 +32,31 @@ table.innerHTML="";
 
 let wins=0;
 let totalProfit=0;
+let todayProfit=0;
+let monthProfit=0;
+
+const today = new Date().toISOString().split("T")[0];
+const currentMonth = new Date().getMonth();
+const currentYear = new Date().getFullYear();
 
 trades.forEach((trade,index)=>{
 
 if(trade.profit>0) wins++;
 
 totalProfit += trade.profit;
+
+  if(trade.date === today){
+    todayProfit += trade.profit;
+}
+
+const tradeDate = new Date(trade.date);
+
+if(
+tradeDate.getMonth() === currentMonth &&
+tradeDate.getFullYear() === currentYear
+){
+    monthProfit += trade.profit;
+}
 
 table.innerHTML += `
 <tr>
@@ -66,6 +85,18 @@ trades.length
 
 document.getElementById("totalProfit").innerText=
 "$"+totalProfit.toFixed(2);
+
+  const todayElement = document.getElementById("todayProfit");
+if(todayElement){
+todayElement.innerText =
+"$" + todayProfit.toFixed(2);
+}
+
+const monthElement = document.getElementById("monthProfit");
+if(monthElement){
+monthElement.innerText =
+"$" + monthProfit.toFixed(2);
+}
 }
 
 function deleteTrade(index){
