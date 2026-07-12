@@ -1,0 +1,1 @@
+# jurnal-trading-by-23cil
