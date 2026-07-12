@@ -35,6 +35,9 @@ let totalProfit=0;
 let todayProfit=0;
 let monthProfit=0;
 
+let grossProfit = 0;
+let grossLoss = 0;
+
 const today = new Date().toISOString().split("T")[0];
 const currentMonth = new Date().getMonth();
 const currentYear = new Date().getFullYear();
@@ -47,6 +50,11 @@ totalProfit += trade.profit;
 
   if(trade.date === today){
     todayProfit += trade.profit;
+    if(trade.profit > 0){
+    grossProfit += trade.profit;
+}else{
+    grossLoss += Math.abs(trade.profit);
+    }
 }
 
 const tradeDate = new Date(trade.date);
@@ -85,6 +93,14 @@ trades.length
 
 document.getElementById("totalProfit").innerText=
 "$"+totalProfit.toFixed(2);
+
+  const profitFactor =
+grossLoss > 0
+? (grossProfit / grossLoss).toFixed(2)
+: grossProfit.toFixed(2);
+
+document.getElementById("profitFactor").innerText =
+profitFactor;
 
   const todayElement = document.getElementById("todayProfit");
 if(todayElement){
